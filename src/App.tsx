@@ -8,6 +8,7 @@ import SetMaxButtonGroup from './components/SetMaxButtonGroup'
 import TextInput from './components/TextInput'
 import { toPercent } from './helpers'
 import './tailwind.css'
+import NumberInput from './components/NumberInput'
 
 const App = () => {
   const [value, setValue] = useLocalStorage('one-rep-max', defaultExercises)
@@ -100,7 +101,7 @@ const App = () => {
                     />
                   </Cell>
                   <Cell className="w-1/2 text-center">
-                    <TextInput
+                    <NumberInput
                       className="text-center"
                       onChange={({ target: { value } }: any) =>
                         dispatch({
