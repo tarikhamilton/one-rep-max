@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import cx from 'classnames'
 import { toPercent } from './../helpers'
 
@@ -9,12 +9,12 @@ interface ISetMaxBtn {
   onClick?: any
 }
 
-const SetMaxBtn = ({
+const SetMaxBtn: FC<ISetMaxBtn> = ({
   label = null,
   value = 0,
   active,
   ...props
-}: ISetMaxBtn) => (
+}) => (
   <button
     className={cx(`m-1 p-2 rounded bg-green-400 font-bold text-sm text-white`, {
       'bg-green-600': active,

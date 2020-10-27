@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const Cell = ({
+const Cell: FC<any> = ({
   className = '',
   children,
 }: {

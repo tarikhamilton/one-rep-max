@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const HeaderCell = ({
+const HeaderCell: FC<any> = ({
   className = '',
   children,
 }: {
