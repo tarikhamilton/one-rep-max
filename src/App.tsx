@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { FC, useEffect, useReducer } from 'react'
 import { useLocalStorage } from 'react-use'
 import reducer, { defaultExercises, ACTIONS, IExercise } from './reducer'
 import Cell from './components/Cell'
@@ -10,7 +10,7 @@ import { toPercent } from './helpers'
 import './tailwind.css'
 import NumberInput from './components/Inputs/NumberInput'
 
-const App = () => {
+const App: FC<any> = () => {
   const [value, setValue] = useLocalStorage('one-rep-max', defaultExercises)
   const [
     { editing, editingExercises, exercises, percentMax },
@@ -27,6 +27,7 @@ const App = () => {
       type: ACTIONS.UPDATE_EXERCISES,
       payload: { value },
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

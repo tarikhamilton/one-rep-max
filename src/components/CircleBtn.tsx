@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const CircleBtn = (props: any) => (
+const CircleBtn: FC<any> = (props: any) => (
   <div
     className="inline-block relative p-8 m-2 rounded-full text-white text-sm font-bold uppercase bg-purple-400"
     {...props}
