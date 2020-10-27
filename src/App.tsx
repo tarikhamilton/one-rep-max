@@ -5,10 +5,10 @@ import Cell from './components/Cell'
 import CircleBtn from './components/CircleBtn'
 import HeaderCell from './components/HeaderCell'
 import SetMaxButtonGroup from './components/SetMaxButtonGroup'
-import TextInput from './components/TextInput'
+import TextInput from './components/Inputs/TextInput'
 import { toPercent } from './helpers'
 import './tailwind.css'
-import NumberInput from './components/NumberInput'
+import NumberInput from './components/Inputs/NumberInput'
 
 const App = () => {
   const [value, setValue] = useLocalStorage('one-rep-max', defaultExercises)
