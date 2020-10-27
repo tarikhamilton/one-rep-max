@@ -1,3 +1,19 @@
+# 🏋️‍♂️ one-rep-max 🏋️‍♀️
+
+[![GitHub license](https://img.shields.io/github/license/tarikhamilton/one-rep-max.svg)](https://github.com/tarikhamilton/one-rep-max/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/tarikhamilton/one-rep-max.svg)](https://GitHub.com/tarikhamilton/one-rep-max/issues/)
+[![GitHub issues](https://img.shields.io/github/issues-closed/tarikhamilton/one-rep-max.svg)](https://GitHub.com/tarikhamilton/one-rep-max/issues?q=is%3Aissue+is%3Aclosed)
+
+one-rep-max is a TypeScript React progressive web app you can use to reference your one-rep maxes and at different percentages without signing in or creating an account.
+
+You can see it in action here, [tarikhamilton.com/one-rep-max](https://tarikhamilton.com/one-rep-max).
+
+Never heard of a [progressive web app](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)? They're basically web apps that Android and iOS can "install" on your device for offline capabilities and a native-like experience. This is my first _intentional_ PWA project (all Create React App projects are bootstrapped for PWA support), so it should be fun fleshing it out together.
+
+This is a personal project I decided to open-source for Hacktoberfest🎃. See the [contributing guidelines](https://github.com/tarikhamilton/one-rep-max/blob/main/CONTRIBUTING.md) to make a PR.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
