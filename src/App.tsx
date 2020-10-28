@@ -5,9 +5,10 @@ import Cell from './components/Cell'
 import CircleBtn from './components/CircleBtn'
 import HeaderCell from './components/HeaderCell'
 import SetMaxButtonGroup from './components/SetMaxButtonGroup'
-import TextInput from './components/TextInput'
+import TextInput from './components/Inputs/TextInput'
 import { toPercent } from './helpers'
 import './tailwind.css'
+import NumberInput from './components/Inputs/NumberInput'
 
 const App: FC<any> = () => {
   const [value, setValue] = useLocalStorage('one-rep-max', defaultExercises)
@@ -101,7 +102,7 @@ const App: FC<any> = () => {
                     />
                   </Cell>
                   <Cell className="w-1/2 text-center">
-                    <TextInput
+                    <NumberInput
                       className="text-center"
                       onChange={({ target: { value } }: any) =>
                         dispatch({
