@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import cx from 'classnames'
-import { toPercent } from './../helpers'
+import { toPercent, toPercentMarkup } from './../../helpers'
 
 interface ISetMaxBtn {
   active: boolean
@@ -21,7 +21,7 @@ const SetMaxBtn: FC<ISetMaxBtn> = ({
     })}
     {...props}
   >
-    {label || toPercent(value)}
+    {label || toPercentMarkup(value)}
   </button>
 )
 

@@ -2,13 +2,18 @@ import React, { FC, useEffect, useReducer } from 'react'
 import { useLocalStorage } from 'react-use'
 import reducer, { defaultExercises, ACTIONS, IExercise } from './reducer'
 import Cell from './components/Cell'
-import CircleBtn from './components/CircleBtn'
+import CircleButton from './components/CircleButton'
 import HeaderCell from './components/HeaderCell'
 import SetMaxButtonGroup from './components/SetMaxButtonGroup'
 import TextInput from './components/Inputs/TextInput'
-import { toPercent } from './helpers'
+import { addSuffix, toPercentMarkup } from './helpers'
 import './tailwind.css'
 import NumberInput from './components/Inputs/NumberInput'
+import {
+  faPencilAlt,
+  faSave,
+  faUndoAlt,
+} from '@fortawesome/free-solid-svg-icons'
 
 const App: FC<any> = () => {
   const [value, setValue] = useLocalStorage('one-rep-max', defaultExercises)
@@ -30,27 +35,33 @@ const App: FC<any> = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  console.log(faSave)
+
   return (
     <div className="App">
       <section className="fixed bottom-0 right-0 m-6">
         {editing ? (
           <>
-            <CircleBtn
+            <CircleButton
+              icon={faSave}
+              title="Save"
               onClick={() => {
                 dispatch({ type: ACTIONS.SAVE_EDIT })
                 setValue(editingExercises)
               }}
-            >
-              Save
-            </CircleBtn>
-            <CircleBtn onClick={() => dispatch({ type: ACTIONS.CANCEL_EDIT })}>
-              Undo
-            </CircleBtn>
+            />
+            <CircleButton
+              icon={faUndoAlt}
+              title="Undo"
+              onClick={() => dispatch({ type: ACTIONS.CANCEL_EDIT })}
+            />
           </>
         ) : (
-          <CircleBtn onClick={() => dispatch({ type: ACTIONS.START_EDITING })}>
-            Edit
-          </CircleBtn>
+          <CircleButton
+            icon={faPencilAlt}
+            title="Edit"
+            onClick={() => dispatch({ type: ACTIONS.START_EDITING })}
+          />
         )}
       </section>
       <section className="my-2 text-center">
@@ -75,7 +86,7 @@ const App: FC<any> = () => {
               <tr>
                 <HeaderCell className="w-1/2">Exercise</HeaderCell>
                 <HeaderCell className="w-1/4 bg-blue-500">
-                  {toPercent(percentMax)}
+                  {toPercentMarkup(percentMax)}
                 </HeaderCell>
                 <HeaderCell className="w-1/4">Max</HeaderCell>
               </tr>
@@ -124,9 +135,11 @@ const App: FC<any> = () => {
                 <tr key={id}>
                   <Cell className="p-4 text-left">{name}</Cell>
                   <Cell className="p-4 text-center bg-gray-200 font-bold">
-                    {(percentMax * max).toFixed()}
+                    {addSuffix((percentMax * max).toFixed(), 'lbs')}
                   </Cell>
-                  <Cell className="p-4 text-center">{max}</Cell>
+                  <Cell className="p-4 text-center">
+                    {addSuffix(max, 'lbs')}
+                  </Cell>
                 </tr>
               )
             )}

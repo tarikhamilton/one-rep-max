@@ -1,31 +1,25 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { FC } from 'react'
 
 export interface CircleButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean
-  /**
-   * What background color to use
-   */
   backgroundColor?: string
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large'
-  /**
-   * Button contents
-   */
-  label: string
-  /**
-   * Optional click handler
-   */
+  size?: 'sm' | '2x' | '3x'
   onClick?: () => void
+  title?: string
+  icon?: IconProp
+  children?: any
 }
 
-export const CircleButton: FC<CircleButtonProps> = (props) => (
+export const CircleButton: FC<CircleButtonProps> = ({
+  icon,
+  size = '2x',
+  title,
+  ...props
+}) => (
   <div
-    className="inline-block relative p-8 m-2 rounded-full text-white text-sm font-bold uppercase bg-purple-400"
+    className="inline-block relative p-8 m-2 rounded-full cursor-pointer text-white text-sm font-bold uppercase bg-purple-400"
+    title={title}
     {...props}
   >
     <span
@@ -36,6 +30,7 @@ export const CircleButton: FC<CircleButtonProps> = (props) => (
         transform: 'translate3d(-50%, -50%, 0)',
       }}
     >
+      {icon && <FontAwesomeIcon icon={icon} size={size} />}
       {props.children}
     </span>
   </div>
