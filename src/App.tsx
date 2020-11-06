@@ -9,6 +9,12 @@ import TextInput from './components/Inputs/TextInput'
 import { toPercent } from './helpers'
 import './tailwind.css'
 import NumberInput from './components/Inputs/NumberInput'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faPencilAlt,
+  faSave,
+  faUndoAlt,
+} from '@fortawesome/free-solid-svg-icons'
 
 const App: FC<any> = () => {
   const [value, setValue] = useLocalStorage('one-rep-max', defaultExercises)
@@ -36,20 +42,27 @@ const App: FC<any> = () => {
         {editing ? (
           <>
             <CircleBtn
+              title="Save"
               onClick={() => {
                 dispatch({ type: ACTIONS.SAVE_EDIT })
                 setValue(editingExercises)
               }}
             >
-              Save
+              <FontAwesomeIcon icon={faSave} size="2x" />
             </CircleBtn>
-            <CircleBtn onClick={() => dispatch({ type: ACTIONS.CANCEL_EDIT })}>
-              Undo
+            <CircleBtn
+              title="Undo"
+              onClick={() => dispatch({ type: ACTIONS.CANCEL_EDIT })}
+            >
+              <FontAwesomeIcon icon={faUndoAlt} size="2x" />
             </CircleBtn>
           </>
         ) : (
-          <CircleBtn onClick={() => dispatch({ type: ACTIONS.START_EDITING })}>
-            Edit
+          <CircleBtn
+            title="Edit"
+            onClick={() => dispatch({ type: ACTIONS.START_EDITING })}
+          >
+            <FontAwesomeIcon icon={faPencilAlt} size="2x" />
           </CircleBtn>
         )}
       </section>
