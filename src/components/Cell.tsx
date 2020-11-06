@@ -6,6 +6,6 @@ const Cell: FC<any> = ({
 }: {
   className?: string
   children: any
-}) => <td className={`p-2 text-gray-800 ${className}`}>{children}</td>
+}) => <td className={`p-2 text-gray-800 bg-gray-100 ${className}`}>{children}</td>
 
 export default Cell
