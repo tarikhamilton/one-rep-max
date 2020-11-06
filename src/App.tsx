@@ -68,14 +68,16 @@ const App: FC<any> = () => {
           <thead className="bg-blue-400 text-white">
             {editing ? (
               <tr>
-                <HeaderCell className="w-1/2 align-left">Exercise</HeaderCell>
-                <HeaderCell className="w-1/2 align-left">Max</HeaderCell>
+                <HeaderCell className="w-1/2">Exercise</HeaderCell>
+                <HeaderCell className="w-1/2">Max</HeaderCell>
               </tr>
             ) : (
               <tr>
-                <HeaderCell className="w-1/2 align-left">Exercise</HeaderCell>
-                <HeaderCell className="w-1/4 align-left">Max</HeaderCell>
-                <HeaderCell>{toPercent(percentMax)}</HeaderCell>
+                <HeaderCell className="w-1/2">Exercise</HeaderCell>
+                <HeaderCell className="w-1/4 bg-blue-500">
+                  {toPercent(percentMax)}
+                </HeaderCell>
+                <HeaderCell className="w-1/4">Max</HeaderCell>
               </tr>
             )}
           </thead>
@@ -121,10 +123,10 @@ const App: FC<any> = () => {
               ) : (
                 <tr key={id}>
                   <Cell className="p-4 text-left">{name}</Cell>
-                  <Cell className="p-4 text-center">{max}</Cell>
-                  <Cell className="p-4 text-center">
+                  <Cell className="p-4 text-center bg-gray-200 font-bold">
                     {(percentMax * max).toFixed()}
                   </Cell>
+                  <Cell className="p-4 text-center">{max}</Cell>
                 </tr>
               )
             )}
