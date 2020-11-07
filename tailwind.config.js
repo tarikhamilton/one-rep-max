@@ -5,7 +5,11 @@ module.exports = {
   },
   purge: { content: ['./src/**/*.tsx'] },
   theme: {
-    extend: {},
+    extend: {
+      inset: {
+        '2px': '2px'
+      }
+    },
   },
   variants: {},
   plugins: [],

@@ -5,7 +5,7 @@ import { toPercentMarkup } from './../../helpers'
 export interface ISetMaxButtonGroup {
   onCustomMaxClick?: Function
   /** Percentage values in decimal form. */
-  percents: number[] 
+  percents: number[]
   percentMax: number
   setPercentMax: Function
 }
@@ -24,9 +24,12 @@ const SetMaxBtn: FC<ISetMaxBtn> = ({
   ...props
 }) => (
   <button
-    className={cx(`m-1 p-2 rounded bg-green-400 font-bold text-sm text-white`, {
-      'bg-green-600': active,
-    })}
+    className={cx(
+      `relative m-1 p-2 rounded border-green-700 font-bold text-sm text-white`,
+      active ? 'bg-green-600' : 'bg-green-400',
+      active ? 'border-0' : 'border-b-2',
+      active ? 'top-2px' : 'top-0'
+    )}
     {...props}
   >
     {label || toPercentMarkup(value)}

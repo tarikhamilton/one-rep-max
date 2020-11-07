@@ -39,8 +39,6 @@ const App: FC<any> = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log(faSave)
-
   return (
     <div className="App font-medium text-gray-700">
       <section className="fixed bottom-0 right-0 m-6">
@@ -49,6 +47,7 @@ const App: FC<any> = () => {
             <CircleButton
               icon={faSave}
               title="Save"
+              variant="success"
               onClick={() => {
                 dispatch({ type: ACTIONS.SAVE_EDIT })
                 setValue(editingExercises)
@@ -57,6 +56,7 @@ const App: FC<any> = () => {
             <CircleButton
               icon={faUndoAlt}
               title="Undo"
+              variant="cancel"
               onClick={() => dispatch({ type: ACTIONS.CANCEL_EDIT })}
             />
           </>
@@ -78,7 +78,7 @@ const App: FC<any> = () => {
           }}
         />
       </section>
-      <section className="py-2 px-4">
+      <section className="p-2">
         <table className="w-full bg-blue-400 shadow-lg rounded-lg overflow-hidden">
           <thead className="text-white">
             {editing ? (
@@ -103,7 +103,7 @@ const App: FC<any> = () => {
                   key={id}
                   onClick={() => dispatch({ type: ACTIONS.START_EDITING })}
                 >
-                  <Cell className="w-1/2 text-left">
+                  <Cell editing={editing} className="w-1/2 text-left">
                     <TextInput
                       onChange={({ target: { value } }: any) =>
                         dispatch({
@@ -118,7 +118,7 @@ const App: FC<any> = () => {
                       }
                     />
                   </Cell>
-                  <Cell className="w-1/2 text-center">
+                  <Cell editing={editing} className="w-1/2 text-center">
                     <NumberInput
                       className="text-center"
                       onChange={({ target: { value } }: any) =>
@@ -137,19 +137,22 @@ const App: FC<any> = () => {
                 </tr>
               ) : (
                 <tr key={id}>
-                  <Cell className="p-4 text-left">{name}</Cell>
-                  <Cell className="p-4 text-center bg-gray-100 font-bold">
+                  <Cell className="text-left">{name}</Cell>
+                  <Cell className="text-center bg-gray-100 font-bold">
                     {addSuffix((percentMax * max).toFixed(), 'lbs')}
                   </Cell>
-                  <Cell className="p-4 text-center">
-                    {addSuffix(max, 'lbs')}
-                  </Cell>
+                  <Cell className="text-center">{addSuffix(max, 'lbs')}</Cell>
                 </tr>
               )
             )}
             {!editing && (
-              <tr className="font-bold">
-                <Cell className="bg-blue-100">Total <span aria-label="" role="img">💪</span></Cell>
+              <tr className="font-bold text-blue-700">
+                <Cell className="bg-blue-100">
+                  <span className="mr-1">Total</span>
+                  <span aria-label="" role="img">
+                    💪
+                  </span>
+                </Cell>
                 <Cell className="bg-blue-100"></Cell>
                 <Cell className="bg-blue-100 text-center">
                   {addSuffix(total, 'lbs')}
