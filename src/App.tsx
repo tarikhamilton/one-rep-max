@@ -4,7 +4,7 @@ import reducer, { defaultExercises, ACTIONS, IExercise } from './reducer'
 import Cell from './components/Cell'
 import CircleButton from './components/CircleButton'
 import HeaderCell from './components/HeaderCell'
-import SetMaxButtonGroup from './components/SetMaxButtonGroup'
+import SetMaxButtons from './components/SetMaxButtonGroup'
 import TextInput from './components/Inputs/TextInput'
 import { addSuffix, toPercentMarkup } from './helpers'
 import './tailwind.css'
@@ -65,9 +65,9 @@ const App: FC<any> = () => {
         )}
       </section>
       <section className="my-2 text-center">
-        <SetMaxButtonGroup
+        <SetMaxButtons
           {...{
-            dispatch,
+            percents: [0.5, 0.6, 0.7, 0.8, 0.9],
             percentMax,
             setPercentMax: (value: any) =>
               dispatch({ type: ACTIONS.SET_PERCENT_MAX, payload: { value } }),

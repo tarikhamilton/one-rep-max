@@ -6,7 +6,7 @@ const Suffix = styled.span`
   opacity: 0.9;
 `
 
-export const toPercent = (n: number) => n * 100 + '%'
+export const toPercent = (n: number) => (n * 100).toFixed() + '%'
 
 export const toPercentMarkup = (n: number) =>
   addSuffix(toPercent(n).slice(0, -1), '%')

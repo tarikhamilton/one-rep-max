@@ -1,18 +1,26 @@
 import React, { FC } from 'react'
 import cx from 'classnames'
-import { toPercent, toPercentMarkup } from './../../helpers'
+import { toPercentMarkup } from './../../helpers'
 
-interface ISetMaxBtn {
+export interface ISetMaxButtonGroup {
+  onCustomMaxClick?: Function
+  /** Percentage values in decimal form. */
+  percents: number[] 
+  percentMax: number
+  setPercentMax: Function
+}
+
+export interface ISetMaxBtn {
   active: boolean
   label?: string | null
-  value?: number
   onClick?: any
+  value?: number
 }
 
 const SetMaxBtn: FC<ISetMaxBtn> = ({
+  active,
   label = null,
   value = 0,
-  active,
   ...props
 }) => (
   <button
@@ -25,28 +33,38 @@ const SetMaxBtn: FC<ISetMaxBtn> = ({
   </button>
 )
 
-const SetMaxButtonGroup = ({
-  dispatch,
-  percents = [0.5, 0.6, 0.7, 0.8, 0.9],
-  percentMax,
-  setPercentMax,
-}: any) =>
-  percents
-    .map((value: number) => (
-      <SetMaxBtn
-        key={value}
-        onClick={() => setPercentMax(value)}
-        active={value === percentMax}
-        value={value}
-      />
-    ))
-    .concat(
-      <SetMaxBtn
-        key="custom"
-        active={!percents.includes(percentMax)}
-        label="Custom"
-        onClick={() => {}}
-      />
-    )
+export const SetMaxButtons: FC<ISetMaxButtonGroup> = ({
+  onCustomMaxClick = null,
+  percents,
+  percentMax = 0.5,
+  setPercentMax = (x: any) => x,
+}) => (
+  <>
+    {percents
+      .map((value: number) => (
+        <SetMaxBtn
+          key={value}
+          onClick={() => setPercentMax(value)}
+          active={value === percentMax}
+          value={value}
+        />
+      ))
+      .reduce(
+        (acc: any, el, index, arr) =>
+          arr.length - 1 === index && onCustomMaxClick
+            ? acc.concat(
+                el,
+                <SetMaxBtn
+                  key="custom"
+                  active={!percents.includes(percentMax)}
+                  label="Custom"
+                  onClick={onCustomMaxClick}
+                />
+              )
+            : acc.concat(el),
+        []
+      )}
+  </>
+)
 
-export default SetMaxButtonGroup
+export default SetMaxButtons

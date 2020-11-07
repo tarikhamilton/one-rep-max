@@ -2,7 +2,6 @@
   "name": "one-rep-max",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/wp-content/themes/tarikhamilton-dot-com/apps/one-rep-max/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
