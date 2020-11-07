@@ -590,6 +590,11 @@ video {
   height: auto;
 }
 
+html,
+  body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
 .container {
   width: 100%;
 }
@@ -111302,14 +111307,4 @@ video {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
   }
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance:textfield;
 }

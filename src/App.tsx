@@ -27,6 +27,10 @@ const App: FC<any> = () => {
     editingExercises: JSON.parse(JSON.stringify(defaultExercises)),
   })
 
+  const total = exercises
+    .map(({ max }: any) => +max)
+    .reduce((acc: number, n: number) => acc + n)
+
   useEffect(() => {
     dispatch({
       type: ACTIONS.UPDATE_EXERCISES,
@@ -38,7 +42,7 @@ const App: FC<any> = () => {
   console.log(faSave)
 
   return (
-    <div className="App">
+    <div className="App font-medium text-gray-700">
       <section className="fixed bottom-0 right-0 m-6">
         {editing ? (
           <>
@@ -74,9 +78,9 @@ const App: FC<any> = () => {
           }}
         />
       </section>
-      <section className="p-2">
+      <section className="py-2 px-4">
         <table className="w-full bg-blue-400 shadow-lg rounded-lg overflow-hidden">
-          <thead className=" text-white">
+          <thead className="text-white">
             {editing ? (
               <tr>
                 <HeaderCell className="w-1/2">Exercise</HeaderCell>
@@ -134,7 +138,7 @@ const App: FC<any> = () => {
               ) : (
                 <tr key={id}>
                   <Cell className="p-4 text-left">{name}</Cell>
-                  <Cell className="p-4 text-center bg-gray-200 font-bold">
+                  <Cell className="p-4 text-center bg-gray-100 font-bold">
                     {addSuffix((percentMax * max).toFixed(), 'lbs')}
                   </Cell>
                   <Cell className="p-4 text-center">
@@ -142,6 +146,15 @@ const App: FC<any> = () => {
                   </Cell>
                 </tr>
               )
+            )}
+            {!editing && (
+              <tr className="font-bold">
+                <Cell className="bg-blue-100">Total <span aria-label="" role="img">💪</span></Cell>
+                <Cell className="bg-blue-100"></Cell>
+                <Cell className="bg-blue-100 text-center">
+                  {addSuffix(total, 'lbs')}
+                </Cell>
+              </tr>
             )}
           </tbody>
         </table>

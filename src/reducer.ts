@@ -104,7 +104,7 @@ export function reducer(state: IReducerState, action: IReducerAction) {
 
 export default reducer
 
-export const defaultExercises = [
+export const defaultExercises: IExercise[] = [
   {
     name: 'Conventional Deadlift',
     max: 385,

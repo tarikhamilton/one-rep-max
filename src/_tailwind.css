@@ -3,3 +3,10 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+}
