@@ -22,7 +22,7 @@ const App: FC<any> = () => {
     dispatch,
   ] = useReducer(reducer, {
     editing: false,
-    percentMax: 0.9,
+    percentMax: 0.7,
     exercises: defaultExercises,
     editingExercises: JSON.parse(JSON.stringify(defaultExercises)),
   })
@@ -75,17 +75,17 @@ const App: FC<any> = () => {
         />
       </section>
       <section className="p-2">
-        <table className="w-full bg-gray-100 rounded-lg overflow-hidden">
-          <thead className="bg-blue-400 text-white">
+        <table className="w-full bg-blue-400 shadow-lg rounded-lg overflow-hidden">
+          <thead className=" text-white">
             {editing ? (
               <tr>
                 <HeaderCell className="w-1/2">Exercise</HeaderCell>
-                <HeaderCell className="w-1/2">Max</HeaderCell>
+                <HeaderCell className="w-1/2">Max (lbs)</HeaderCell>
               </tr>
             ) : (
               <tr>
                 <HeaderCell className="w-1/2">Exercise</HeaderCell>
-                <HeaderCell className="w-1/4 bg-blue-500">
+                <HeaderCell className="w-1/4 bg-blue-500 rounded-tl-lg rounded-tr-lg">
                   {toPercentMarkup(percentMax)}
                 </HeaderCell>
                 <HeaderCell className="w-1/4">Max</HeaderCell>
