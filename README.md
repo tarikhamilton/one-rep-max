@@ -6,7 +6,7 @@
 
 one-rep-max is a TypeScript React progressive web app you can use to reference your one-rep maxes and at different percentages without signing in or creating an account.
 
-You can see it in action here, [tarikhamilton.com/one-rep-max](https://tarikhamilton.com/one-rep-max).
+You can see it in action here, [tarikhamilton.github.io/one-rep-max](https://tarikhamilton.github.io/one-rep-max).
 
 Never heard of a [progressive web app](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)? They're basically web apps that Android and iOS can "install" on your device for offline capabilities and a native-like experience. This is my first _intentional_ PWA project (all Create React App projects are bootstrapped for PWA support), so it should be fun fleshing it out together.
 
